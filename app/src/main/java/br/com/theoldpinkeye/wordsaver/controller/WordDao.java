@@ -24,3 +24,4 @@ public interface WordDao {
   @Query("SELECT * FROM word_table ORDER BY word ASC")
   LiveData<List<Word>> getAlphabetizedWords(); // essa lista precisa ser atualizada de forma constante e automática
 }
+
