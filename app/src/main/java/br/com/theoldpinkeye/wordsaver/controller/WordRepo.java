@@ -15,7 +15,7 @@ class WordRepo {
     mAllWords = mWordDao.getAlphabetizedWords();
   }
 
-  LiveData<List<Word>> getmAllWords(){
+  LiveData<List<Word>> getAllWords(){
     return mAllWords;
   }
 
