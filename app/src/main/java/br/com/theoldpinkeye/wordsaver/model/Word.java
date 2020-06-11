@@ -21,8 +21,8 @@ public class Word {
   }
 
   // criamos o método get
-  public String getmWord() {
-    return mWord;
+  public String getWord() {
+    return this.mWord;
   }
 
 }
