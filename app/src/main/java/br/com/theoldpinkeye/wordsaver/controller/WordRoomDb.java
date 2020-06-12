@@ -1,9 +1,11 @@
 package br.com.theoldpinkeye.wordsaver.controller;
 
 import android.content.Context;
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 import br.com.theoldpinkeye.wordsaver.model.Word;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -44,6 +46,7 @@ public abstract class WordRoomDb extends RoomDatabase {
           // cria a instância e alimenta a constante.
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
               WordRoomDb.class, "word_database")
+              .addCallback(sRoomDatabaseCallback)
               .build();
         }
       }
@@ -51,4 +54,24 @@ public abstract class WordRoomDb extends RoomDatabase {
     // depois de garantida a existência da instância, entrega ela pro context da aplicação
     return INSTANCE;
   }
+
+  // Implementando rotina para colocar alguns dados na base de dados:
+  private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
+    @Override
+    public void onOpen(@NonNull SupportSQLiteDatabase db) {
+      super.onOpen(db);
+
+      dbWriteExecutor.execute(() ->{
+        WordDao dao = INSTANCE.wordDao();
+        dao.deleteAll(); // deletando essa linha, o banco conserva os dados
+
+        Word word = new Word("Olá");
+        dao.insert(word);
+        word = new Word("Pessoa");
+        dao.insert(word);
+        word = new Word("Linda");
+        dao.insert(word);
+      });
+    }
+  };
 }
