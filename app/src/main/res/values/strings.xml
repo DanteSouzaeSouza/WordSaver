@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">WordSaver</string>
+  <string name="add_word">Adicionar palavra</string>
 </resources>

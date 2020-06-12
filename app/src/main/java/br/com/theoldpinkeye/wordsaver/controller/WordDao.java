@@ -22,6 +22,7 @@ public interface WordDao {
 
   // método que trará do banco a lista com todas as palavras em ordem crescente
   @Query("SELECT * FROM word_table ORDER BY word ASC")
-  LiveData<List<Word>> getAlphabetizedWords(); // essa lista precisa ser atualizada de forma constante e automática
+  LiveData<List<Word>> getAlphabetizedWords(); // essa lista precisa ser atualizada de
+                                                // forma constante e automática
 }
 
