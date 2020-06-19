@@ -26,7 +26,7 @@ public class WordViewModel extends AndroidViewModel {
   }
 
   // receberá alista de palavras do repository
-  LiveData<List<Word>> getAllWords() { return mAllWords; }
+  public LiveData<List<Word>> getAllWords() { return mAllWords; }
 
   // invocar o método insert do Repository
   public void insert(Word word){ mRepository.insert(word);}

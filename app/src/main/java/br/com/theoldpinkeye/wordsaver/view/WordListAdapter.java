@@ -37,7 +37,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
   }
 
   // método que atualiza a lista de itens
-  void setWords(List<Word> words) {
+  public void setWords(List<Word> words) {
     mWords = words;
     notifyDataSetChanged();
   }
